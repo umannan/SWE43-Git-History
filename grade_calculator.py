@@ -12,17 +12,19 @@ def calculate_average(grades):
     return sum(grades) / len(grades)
 
 
-def calculate_weighted_average(grades, weights):
-    validate_grades(grades)
-
+def validate_weights(grades, weights):
     if len(grades) != len(weights):
         raise ValueError("Each grade must have a corresponding weight.")
 
     if abs(sum(weights) - 1.0) > 0.001:
         raise ValueError("Weights must add up to 1.0.")
 
-    return sum(grade * weight for grade, weight in zip(grades, weights))
 
+def calculate_weighted_average(grades, weights):
+    validate_grades(grades)
+    validate_weights(grades, weights)
+
+    return sum(grade * weight for grade, weight in zip(grades, weights))
 
 def get_letter_grade(average):
     if average >= 90:

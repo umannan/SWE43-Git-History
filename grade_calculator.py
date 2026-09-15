@@ -4,7 +4,7 @@ def validate_grades(grades):
 
     for grade in grades:
         if grade < 0 or grade > 100:
-            raise ValueError("Grades must be between 0 and 100.")
+            raise ValueError(f"Invalid grade {grade}: grades must be between 0 and 100.")
 
 
 def calculate_average(grades):
@@ -17,7 +17,9 @@ def validate_weights(grades, weights):
         raise ValueError("Each grade must have a corresponding weight.")
 
     if abs(sum(weights) - 1.0) > 0.001:
-        raise ValueError("Weights must add up to 1.0.")
+        raise ValueError(
+    f"Invalid weights: weights must add up to 1.0, but total {sum(weights):.2f}."
+)
 
 
 def calculate_weighted_average(grades, weights):

@@ -1,13 +1,27 @@
-def calculate_average(grades):
+def validate_grades(grades):
     if not grades:
-        return 0
+        raise ValueError("At least one grade is required.")
 
     for grade in grades:
         if grade < 0 or grade > 100:
             raise ValueError("Grades must be between 0 and 100.")
 
-    total = sum(grades)
-    return total / len(grades)
+
+def calculate_average(grades):
+    validate_grades(grades)
+    return sum(grades) / len(grades)
+
+
+def calculate_weighted_average(grades, weights):
+    validate_grades(grades)
+
+    if len(grades) != len(weights):
+        raise ValueError("Each grade must have a corresponding weight.")
+
+    if abs(sum(weights) - 1.0) > 0.001:
+        raise ValueError("Weights must add up to 1.0.")
+
+    return sum(grade * weight for grade, weight in zip(grades, weights))
 
 
 def get_letter_grade(average):
@@ -23,10 +37,12 @@ def get_letter_grade(average):
         return "F"
 
 
-grades = [90, 90, 90, 90]
-average = calculate_average(grades)
+grades = [85, 90, 78, 92]
+weights = [0.20, 0.30, 0.20, 0.30]
+
+average = calculate_weighted_average(grades, weights)
 letter_grade = get_letter_grade(average)
 
 print("Grades:", grades)
-print("Average:", average)
+print("Weighted Average:", average)
 print("Letter Grade:", letter_grade)

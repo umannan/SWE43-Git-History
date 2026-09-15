@@ -49,8 +49,23 @@ def print_student_summary(student_name, grades, weights):
     print("Weighted Average:", round(average, 2))
     print("Letter Grade:", letter_grade)
 
-student_name = "Alex"
-grades = [85, 90, 78, 92]
+students = [
+    {
+        "name": "Alex",
+        "grades": [85, 90, 78, 92]
+    },
+    {
+        "name": "Jordan",
+        "grades": [95, 88, 91, 94]
+    },
+    {
+        "name": "Taylor",
+        "grades": [72, 81, 76, 85]
+    }
+]
+
 weights = [0.20, 0.30, 0.20, 0.30]
 
-print_student_summary(student_name, grades, weights)
+for student in students:
+    print_student_summary(student["name"], student["grades"], weights)
+    print()

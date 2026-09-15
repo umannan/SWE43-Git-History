@@ -11,7 +11,7 @@ def calculate_average(grades):
 
 
 def get_letter_grade(average):
-    if average > 90:
+    if average >= 90:
         return "A"
     elif average >= 80:
         return "B"

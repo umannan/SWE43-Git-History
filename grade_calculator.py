@@ -11,7 +11,7 @@ def calculate_average(grades):
 
 
 def get_letter_grade(average):
-    if average >= 90:
+    if average > 90:
         return "A"
     elif average >= 80:
         return "B"
@@ -23,7 +23,7 @@ def get_letter_grade(average):
         return "F"
 
 
-grades = [85, 90, 78, 92]
+grades = [90, 90, 90, 90]
 average = calculate_average(grades)
 letter_grade = get_letter_grade(average)
 

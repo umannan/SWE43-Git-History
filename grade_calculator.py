@@ -40,13 +40,17 @@ def get_letter_grade(average):
     else:
         return "F"
 
+def print_student_summary(student_name, grades, weights):
+    average = calculate_weighted_average(grades, weights)
+    letter_grade = get_letter_grade(average)
 
+    print("Student:", student_name)
+    print("Grades:", grades)
+    print("Weighted Average:", round(average, 2))
+    print("Letter Grade:", letter_grade)
+
+student_name = "Alex"
 grades = [85, 90, 78, 92]
 weights = [0.20, 0.30, 0.20, 0.30]
 
-average = calculate_weighted_average(grades, weights)
-letter_grade = get_letter_grade(average)
-
-print("Grades:", grades)
-print("Weighted Average:", average)
-print("Letter Grade:", letter_grade)
+print_student_summary(student_name, grades, weights)

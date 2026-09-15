@@ -10,8 +10,23 @@ def calculate_average(grades):
     return total / len(grades)
 
 
+def get_letter_grade(average):
+    if average >= 90:
+        return "A"
+    elif average >= 80:
+        return "B"
+    elif average >= 70:
+        return "C"
+    elif average >= 60:
+        return "D"
+    else:
+        return "F"
+
+
 grades = [85, 90, 78, 92]
 average = calculate_average(grades)
+letter_grade = get_letter_grade(average)
 
 print("Grades:", grades)
 print("Average:", average)
+print("Letter Grade:", letter_grade)
